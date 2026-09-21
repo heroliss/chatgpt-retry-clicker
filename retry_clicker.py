@@ -506,7 +506,9 @@ def main() -> None:
     show("运行中……按 Ctrl+C 停止\n")
 
     status_log = StatusLog()
-    with mss.MSS() as capture:
+    # mss 10.x exposes the screenshotter as the lowercase ``mss``
+    # constructor (the old ``MSS`` name is no longer exported).
+    with mss.mss() as capture:
         try:
             scan_number = 0
             while True:
